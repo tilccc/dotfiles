@@ -70,7 +70,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -115,7 +115,11 @@ alias cal="if [ -t 1 ] ; then ncal -b ; else /usr/bin/cal ; fi"
 
 # setxkbmap -option ctrl:swapcaps
 
-PATH="$PATH":"$HOME/.local/scripts/":"$HOME/dev/external/i3-battery-popup/":"$HOME/software/external/pypy3.11-v7.3.18-linux64/bin/":"/usr/bin/nasm":"$HOME/software/zig/zig-linux-x86_64-0.13.0/":"$HOME/software/xidlehook/xidlehook/target/release/"
+PATH="$PATH":"$HOME/.local/scripts/"
+PATH="$PATH":"$HOME/dev/external/i3-battery-popup/"
+PATH="$PATH":"$HOME/software/external/pypy3.11-v7.3.18-linux64/bin/"
+PATH="$PATH":"/usr/bin/nasm"
+PATH="$PATH":"$HOME/software/xidlehook/xidlehook/target/release/"
 
 # pnpm
 export PNPM_HOME="/home/tilc/.local/share/pnpm"
@@ -135,9 +139,8 @@ printf "
 (O _ o)
   \_  \_\n\n";
 
-function cls() {
-    clear && printf "
-(O _ o)
+function clear() {
+    echo "\033c" && printf "(O _ o)
   \_  \_\n\n";
 }
 # swap caps ctrl
@@ -165,3 +168,14 @@ if [ -f '/home/tilc/software/external/google-cloud-sdk/path.zsh.inc' ]; then . '
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/tilc/software/external/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/tilc/software/external/google-cloud-sdk/completion.zsh.inc'; fi
+
+# ZVM
+export ZVM_INSTALL="$HOME/.zvm/self"
+if [ -d "$ZVM_INSTALL" ]; then
+  export PATH="$PATH:$HOME/.zvm/bin"
+  export PATH="$PATH:$ZVM_INSTALL"
+fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

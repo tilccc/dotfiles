@@ -4,6 +4,14 @@ To load all of this configurations just run
 $ stow .
 ```
 
+## Automatic Keyboard Remaps On Keyboard Layout Change
+### `.config/keyboard-layout-watcher` and `.config/systemd/user/keyboard_watcher.service`
+- IMPORTANT: This assumes that you have a system wide python at `/usr/bin/python3`
+- This is used for sourcing of `.zshrc` on keyboard layout change
+    - `.zshrc` is sourced because we want the keyboard remappings to be reapplied to the new layout
+- This utalizes `systemd` to create a startup service which runs a Python script
+-  
+
 ## Font
 
 * The preferred fontface to use is `Iosevka SS02 Term`
@@ -57,3 +65,5 @@ $ sudo apt-get install ripgrep
 - `Iosevka fonts` - https://github.com/be5invis/Iosevka/releases
 - `brightnessctl` - https://github.com/Hummer12007/brightnessctl 
 - `GDBFrontend` - https://github.com/rohanrhu/gdb-frontend
+- `systemd` - https://en.wikipedia.org/wiki/Systemd
+- `Python` - https://www.python.org/

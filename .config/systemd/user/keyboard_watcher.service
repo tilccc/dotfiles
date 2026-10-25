@@ -1,0 +1,12 @@
+[Unit]
+Description=Runs keyabord-layout-watcher Python script
+After=network.target
+
+[Service]
+WorkingDirectory=/home/tilc/.config/keyboard-layout-watcher
+ExecStart=/usr/bin/python3 main.py
+Type=simple
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

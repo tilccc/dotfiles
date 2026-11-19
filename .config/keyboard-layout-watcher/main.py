@@ -9,8 +9,8 @@ def on_notify(namespace, keys, tag):
     # namespace is the first argument of the signal, i.e., the dconf path
     if "engines-order" in str(namespace):
         print("Layout changed, running command...")
-        subprocess.Popen(
-            ["/bin/zsh", "-c", "(source /home/tilc/.config/.zshrc) >/dev/null 2>&1"],
+        subprocess.run(
+            ["setxkbmap", "-option", "ctrl:swapcaps"],
             stdout=None,
         )
 
